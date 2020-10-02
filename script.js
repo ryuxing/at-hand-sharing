@@ -78,7 +78,6 @@ async function main() {
       var name = streams.querySelector(`[content-peer-id="${peerId}"]`).querySelector(".name").innerHTML;
       addMsg(name+" さん が退出しました。");
       removeElements(peerId);
-      messages.textContent += `===${time} 切断：${peerId}  ===\n`;
     });
 
     // for closing myself
