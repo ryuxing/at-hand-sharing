@@ -56,7 +56,7 @@ async function main() {
       room.send({profile:profile});
     });
     room.on('peerJoin', peerId => {
-      addMsg(peerId+"が入室しました");
+      addMsg("<span class='"+peerId+"'>"+peerId+"</span>が入室しました");
       addPointer(peerId);
       room.send({profile:profile});
     });

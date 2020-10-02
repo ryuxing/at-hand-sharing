@@ -163,6 +163,7 @@ window.onDataRcv ={
             point.style.backgroundColor=data.color;
             point.querySelector("div").style.backgroundImage="url("+data.icon+")";
         }
+        //ビデオプロフィール更新
         var video = streams.querySelector(`[data-peer-id="${src}"]`);
         if(video==null){
             //videoは読み込みが遅いことを考慮して3秒後に実施
@@ -178,6 +179,12 @@ window.onDataRcv ={
             video.querySelector(".control").style.backgroundColor=data.color;
             video.querySelector(".name").innerHTML=data.name;
 
+        }
+        //最初のお知らせ部分の文字更新
+        var doms = document.getElementsByClassName(src);
+        for(dom of doms){
+            dom.innerHTML=data.name+" さん ";
+            dom.className="";
         }
     }
 }
