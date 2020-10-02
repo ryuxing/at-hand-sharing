@@ -60,10 +60,10 @@ function focusmove(e){
     setTimeout(()=>{focusSendable=true;},150);
 }
 function onFocus(e){
-    pointers.querySelector(`[peer-id=${e.target.getAttribute('peer-id')}]`).classList.remove("display-none");
+    pointers.querySelector(`[peer-id=${`[peer-id=${peer.id}]`}]`).classList.remove("display-none");
 }
 function offFocus(e){
-    pointers.querySelector(`[peer-id=${e.target.getAttribute('peer-id')}]`).classList.add("display-none");
+    pointers.querySelector(`[peer-id=${`[peer-id=${peer.id}]`}]`).classList.add("display-none");
     clicked=false;
     room.send({mouseout:true});
 }
@@ -106,6 +106,7 @@ window.onDataRcv ={
         console.dir(data);
         var canvas = streams.querySelector(`[peer-id="${data['peer-id']}"]`);
         var cursor = pointers.querySelector(`[peer-id="${src}"]`);
+        console.dir(canvas);
         var rect = canvas.getBoundingClientRect();
         cursor.style.top=((window.pageYOffset + rect.top)  + ((canvas.clientHeight/data.h)*data.y))+"px";
         cursor.style.left=((window.pageXOffset+ rect.left) + ((canvas.clientWidth/data.w)*data.x) )+"px";
