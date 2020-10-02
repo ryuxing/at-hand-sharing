@@ -121,6 +121,7 @@ window.onDataRcv ={
             let obj = data[i];
             let canvas = streams.querySelector(`[peer-id="${data['peer-id']}"]`);
             console.dir(canvas);
+            console.log(data['peer-id']);
             console.log(streams.querySelector(`[peer-id="${data['peer-id']}"]`));
             console.dir(streams);
             console.warn(data);
