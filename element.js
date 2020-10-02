@@ -47,10 +47,10 @@ async function addArea(stream,peerId,name=peerId,color="lightgray"){
     var control = document.createElement("div");
     control.classList.add("control");
     control.style.backgroundColor=color;
-    var name = document.createElement("span");
-    name.classList.add("name");
-    name.innerHTML = name;
-    control.append(name);
+    var nameDom = document.createElement("span");
+    nameDom.classList.add("name");
+    nameDom.innerHTML = name;
+    control.append(nameDom);
     div.append(control);
     var buttons = document.createElement("div");
     var action = ["pause","save","clear"];

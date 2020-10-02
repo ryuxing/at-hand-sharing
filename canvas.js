@@ -119,12 +119,7 @@ window.onDataRcv ={
     draw: function(src,data){
         for(var i=0;i<data.length;i++){
             let obj = data[i];
-            let canvas = streams.querySelector(`[peer-id="${data['peer-id']}"]`);
-            console.dir(canvas);
-            console.log(data['peer-id']);
-            console.log(streams.querySelector(`[peer-id="${data['peer-id']}"]`));
-            console.dir(streams);
-            console.warn(data);
+            let canvas = streams.querySelector(`[peer-id="${obj['peer-id']}"]`);
             let xcvs = (canvas.clientWidth/obj.w )*obj.x;
             let ycvs = (canvas.clientHeight/obj.h)*obj.y;
             if(src in canvas.contexts==false){
