@@ -4,10 +4,9 @@ addArea(stream, peerId, name, color)
     ->canvasControl[act]
 addPointer(peerId,color,icon,name)
 */
-window.onload = ()=>{
-    window.pointers = document.getElementById("pointers");
-    window.streams = document.getElementById("js-remote-streams");
-}
+window.pointers = document.getElementById("pointers");
+window.streams = document.getElementById("js-remote-streams");
+
 function addMsg(msg){
     var p = document.createElement("p");
     var d = new Date();
