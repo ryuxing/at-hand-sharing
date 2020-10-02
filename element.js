@@ -16,8 +16,8 @@ function addMsg(msg){
     time +=d.getHours()+":";
     if(d.getMinutes()<10){time+='0';}
     time +=d.getMinutes()+" /";
-    p.append(t);
-    p.innerHTML+=msg;
+    p.innerHTML=msg;
+    p.prepend(t);
     document.getElementById('js-messages').append(p);
 }
 
