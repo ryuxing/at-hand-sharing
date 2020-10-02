@@ -47,7 +47,7 @@ function focusmove(e){
     }
     var clientRect = e.target.getBoundingClientRect();
     console.log(e.target.getAttribute('peer-id'));
-    var point = pointers.querySelector(`[peer-id=${peer.id}]`);
+    var point = pointers.querySelector(`[peer-id="${peer.id}"]`);
     point.style.top = (window.pageYOffset + clientRect.top + y)+"px";
     point.style.left = (window.pageXOffset + clientRect.left + x)+"px";
     focusSendable=false;
@@ -60,10 +60,10 @@ function focusmove(e){
     setTimeout(()=>{focusSendable=true;},150);
 }
 function onFocus(e){
-    pointers.querySelector(`[peer-id=${`[peer-id=${peer.id}]`}]`).classList.remove("display-none");
+    pointers.querySelector(`[peer-id="${peer.id}"]`).classList.remove("display-none");
 }
 function offFocus(e){
-    pointers.querySelector(`[peer-id=${`[peer-id=${peer.id}]`}]`).classList.add("display-none");
+    pointers.querySelector(`[peer-id="${peer.id}"]`).classList.add("display-none");
     clicked=false;
     room.send({mouseout:true});
 }
@@ -154,7 +154,7 @@ window.onDataRcv ={
         if(data.icon==""){data.icon="img/man.png";}
         var point = pointers.querySelector(`[peer-id="${src}"]`);
         if(point==null){
-            point = addPointer(src,data.color,"url('"+data.ico+"')");
+            point = addPointer(src,data.color,"url('"+data.icon+"')");
         }else{
             point.style.backgroundColor=data.color;
             point.querySelector("div").style.backgroundImage="url("+data.icon+")";
