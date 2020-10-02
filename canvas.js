@@ -46,6 +46,7 @@ function focusmove(e){
         return;
     }
     var clientRect = e.target.getBoundingClientRect();
+    console.log(e.target.getAttribute('peer-id'));
     var point = pointers.querySelector(`[peer-id=${e.target.getAttribute('peer-id')}]`);
     point.style.top = (window.pageYOffset + clientRect.top + y)+"px";
     point.style.left = (window.pageXOffset + clientRect.left + x)+"px";

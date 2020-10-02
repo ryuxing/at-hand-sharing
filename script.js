@@ -58,6 +58,7 @@ async function main() {
     room.on('peerJoin', peerId => {
       addMsg(peerId+"が入室しました");
       addPointer(peerId);
+      room.send({profile:profile});
     });
 
     // Render remote stream for new peer join in the room
