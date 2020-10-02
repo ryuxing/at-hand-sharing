@@ -64,8 +64,8 @@ async function addArea(stream,peerId,name=peerId,color="lightgray"){
         buttons.append(button);
     }
     //Add observer
-    await newVideo.play().catch(console.error);
     resizeObserver.observe(newVideo);
+    await newVideo.play().catch(console.error);
 }
 function addPointer(peerId,color="light-gray",icon="url('img/man.png')",name=""){
     var pointer = document.createElement("div");

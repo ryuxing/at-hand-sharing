@@ -1,17 +1,16 @@
 //Observer
-window.onload=()=>{
-    window.resizeObserver = new resizeObserver(async entries=>{
-        for (entry of entries){
-            let canvas = entry.target.parentNode.getElementsByTagName("canvas")[0];
-            if(Math.abs(((canvas.width/canvas.height)/(entry.target.clientWidth/entry.target.clientheight))-1)>0.1){
-            //縦横比が大きく変化したとき =　スマホ等の画面が回転したときは、描画内容を保存しない
-            canvas.width=entry.target.clientWidth;
-            canvas.height=entry.target.clientHeight; 
-            continue; 
-            }
+var resizeObserver = new resizeObserver(async entries=>{
+    for (entry of entries){
+        let canvas = entry.target.parentNode.getElementsByTagName("canvas")[0];
+        if(Math.abs(((canvas.width/canvas.height)/(entry.target.clientWidth/entry.target.clientheight))-1)>0.1){
+        //縦横比が大きく変化したとき =　スマホ等の画面が回転したときは、描画内容を保存しない
+        canvas.width=entry.target.clientWidth;
+        canvas.height=entry.target.clientHeight; 
+        continue; 
         }
-    });
-};
+    }
+});
+
 //canvas control
 const canvasControl = {
     pause: function(e){
