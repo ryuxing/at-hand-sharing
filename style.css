@@ -1,0 +1,194 @@
+/*#js-local-stream{
+    width:100px;
+    position: fixed;
+    display: block;
+    right:10px;
+    bottom:10px;
+    border-radius: 10px;
+    border: 1px solid rgba(128,128,128,.7);
+    padding: 0;
+    background: rgba(128,128,128,.7) ;
+}*/
+body{
+    overflow:hidden ,scroll;
+}
+.remote-streams{
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(300px , 1fr));
+    grid-template-rows: repeat(auto-fit,minmax(300px , 1fr));
+    gap: 10px;
+    vertical-align: middle;
+}
+.remote-streams{
+    padding:5px;
+}
+.remote-streams div{
+    position: relative;
+}
+video{
+    width:100%;
+    margin: auto;
+    position:relative;
+    z-index: 10;
+}
+canvas{
+    background-color: #FFFFFF00;
+    position: absolute;
+    z-index:11;
+    top:0;
+    left:0;
+
+}
+
+.pointer{
+    top: 0;
+    left:0;
+    margin: 0;
+    position: absolute;
+    border-radius: 0 2em 2em 2em;
+    width:auto;
+    height:auto;
+    padding: 10px 10px 5px 5px;
+    font-size: 1.5em;
+    background-color:red;
+    pointer-events: none;
+    z-index: 20;
+    transform-origin: 0px 0px 0px;
+    transform: rotate(-45deg);
+    overflow: hidden;
+}
+.pointer div{
+    transform-origin: center center;
+    transform: rotate(45deg);
+    translate: -50%;
+    border-radius: 2em 2em 2em;
+    margin:0;
+    padding: 0;
+    width:40px;
+    height:40px;
+    text-align: center;
+    vertical-align: middle;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+}
+ .control{
+    padding: 1em;
+    position:relative;
+    top:-.5em;
+    z-index:1;
+    background-color:red;
+    border-radius:  0 0 1em 1em;
+    width: auto;
+    display: inline-block;
+    vertical-align: middle;
+}
+.display-none{
+    display:none !important;
+}
+.buttons{
+    display: inline-block;
+}
+.button{
+    display: inline-block;
+    background-color: darkblue;
+    color:white;
+    border-radius: 2em;
+    transition: background .3s, color .3s;
+    padding: .5em;
+}
+.button:hover{
+    color:darkblue;
+    background-color: white;
+}
+.button:active{
+    background-color: lightgray;
+    transition: background .1s;
+}
+.name{
+    font-size: 1.3em;
+    font-weight: 600;
+    margin-right:2em;
+}
+#touchcontrol{
+    display: block;
+    position: fixed;
+    right:0;
+    bottom:3em;
+    border-radius: 2em 0 0 2em ;
+    width:3em;
+    height:20em;
+    padding: .5em;
+    background:#FFAA00AA;
+    z-index: 50;
+    overflow: hidden;
+}
+#touchcontrol label{
+    display: block;
+    background-color: greenyellow;
+    border-radius: 50%;
+    width: 2em;
+    height:2em;
+    padding: .5em;
+    margin: 1.5em auto;
+    text-align: center;
+    transition: background .3s, width .3s;
+}
+#touchcontrol input:checked +label{
+    background-color: white;
+}
+input[type="radio"]{
+    display:none;
+}
+.init{
+    text-align: center;
+    width:100%;
+    height:100%;
+    z-index: 99;
+    position: fixed;
+    left:0;
+    bottom:0;
+    background-color: #000000DD;
+    vertical-align: baseline;
+}
+.init h1{
+    color:white;
+    width: 100%;
+    position: fixed;
+    left:0;
+    top:0;
+    z-index: 100;
+    background-color: #000000AA;
+    overflow: hidden;
+}
+.init video{
+    left: 50%;
+    top:50%;
+
+    transform:translate(-50%, -60%);
+    
+}
+.init .buttons{
+    z-index: 100;
+    position: fixed;
+    left:0;
+    bottom:20px;
+    width:100%;
+    left: 0%;
+
+}
+button{
+    font-size: 1.5em;
+    border-radius: 2em;
+    padding: .5em;
+    margin: .5em;
+    width: 80%;
+    border: 1px solid gray;
+    background:rgb(122, 217, 255);
+    bottom:10px;
+
+}
+button:disabled{
+    background-color: gray;
+    color: white;
+}

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SkyWay - Room example</title>
+    <!--<link rel="stylesheet" href="../_shared/style.css">-->
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class="container">
+      <div style="background: #00000030; padding: .5px; width:100%; max-width:30em;">
+        <p>=====Message=====</p>
+        <pre class="messages" id="js-messages"></pre>
+        <button id="js-leave-trigger">退出</button>
+      </div>
+    </div>
+    <div class="init">
+      <h1>回路共有システム</h1>
+      <video id="init-stream"></video>
+      <div class="buttons">
+        <button id="js-join-trigger" type="button">参加</button>
+        <button id="js-join-trigger-without-camera" style="background-color: lightgray;">ビデオなしで参加</button>  
+      </div>
+    </div>
+
+      <div class="room">
+        <div class="remote-streams" id="js-remote-streams">
+          <div class="stream">
+            <video id="js-local-stream"></video>
+            <canvas></canvas>
+            <div class="control">
+              <span class="name" bgcolor="#55FF55">自分</span>
+              <div class="buttons">
+                <div class="button pause">pause</div>
+                <div class="button save">save</div>
+                <div class="button clear">clear</div>
+              </div>
+            </div>
+          </div>
+          <canvas id="tmp"></canvas>
+        </div>
+
+      <p class="meta" id="js-meta"></p>
+    </div>
+    <script src="//cdn.webrtc.ecl.ntt.com/skyway-latest.js"></script>
+    <script src="./key.js"></script>
+    <script src="./script.js"></script>
+    <script src="./smartphone.js"></script>
+    <div id="pointers">
+      <div class="pointer display-none" bgcolor="#55FF55"><div>You</div></div>
+    </div>
+    <form id ="touchcontrol" class="display-none">
+      <div style="background-color:#AAFFCC; text-align:center;border-radius: 50%;width: 1em;height:1em;padding: 1em;margin: 1.5em auto;">&gt;&gt;</div>
+      <input type="radio" name="touchAction" value="scroll" id="scroll"><label for="scroll"><img src="img/scroll.svg"></label>
+      <input type="radio" name="touchAction" value="point" id="point"><label for="point"><img src="img/select.svg"></label>
+      <input type="radio" name="touchAction" value="draw" id="draw"><label for="draw"><img src="img/pen.svg"></label>
+      <input type="radio" name="touchAction" value="off" id="off" checked>
+    </form>
+  </body>
+</html>
