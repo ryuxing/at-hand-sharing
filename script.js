@@ -2,7 +2,7 @@ const Peer = window.Peer;
 var profile={
   name:"No Name",
   color:"pink",
-  icon:"./man.png"
+  icon:"img/man.png"
 };
 async function main() {
   const joinTriggerNoCam = document.getElementById('js-join-trigger-without-camera');
@@ -52,7 +52,7 @@ async function main() {
     room.once('open', () => {
       addMsg(param.room+"に入室しました");
       addArea(localStream,peer.id,profile.name+" (自分)","red");
-      addPointer(peer.id,"red",profile.icon,profile.name);
+      addPointer(peer.id,"red",profile.icon);
       room.send({profile:profile});
     });
     room.on('peerJoin', peerId => {

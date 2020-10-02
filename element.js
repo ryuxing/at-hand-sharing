@@ -51,6 +51,7 @@ async function addArea(stream,peerId,name=peerId,color="lightgray"){
     name.classList.add("name");
     name.innerHTML = name;
     control.append(name);
+    div.append(control);
     var buttons = document.createElement("div");
     var action = ["pause","save","clear"];
     for(act in action){
@@ -66,12 +67,12 @@ async function addArea(stream,peerId,name=peerId,color="lightgray"){
     resizeObserver.observe(newVideo);
     await newVideo.play().catch(console.error);
 }
-function addPointer(peerId,color="light-gray",icon="url('img/man.png')",name=""){
+function addPointer(peerId,color="light-gray",icon="url('img/man.png')",name="　"){
     var pointer = document.createElement("div");
     var div = document.createElement("div");
-    pointer.append(div);
     div.innerHTML=name;
     div.style.backgroundImage=icon;
+    pointer.append(div);
     pointer.className="pointer display-none";
     pointer.setAttribute('peer-id',peerId);
     pointer.style.backgroundColor=color;
