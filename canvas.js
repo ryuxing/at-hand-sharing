@@ -99,7 +99,7 @@ function drawFinalize(e){
     drawing=[];
 }
 //remote drawing
-window.onDataRecv ={
+window.onDataRcv ={
     mouse: function(src,data){
         //srcのポインタをdataに反映させる
         //display-noneクラスを削除

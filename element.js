@@ -83,9 +83,7 @@ function removeElements(peerId){
     var video = document.querySelector(`[data-peer-id="${peerId}"]`);
     video.srcObject.getTracks().forEach(track => track.stop());
     video.srcObject = null;
-    var elements = document.querySelectorAll(`[content-peer-id="${peerId}"]`);
-    for (ele of elements){
-        ele.remove();
-    }
+    streams.querySelector(`[content-peer-id="${peerId}"]`).remove();
+    pointers.querySelector(`[peer-id="${peerId}"]`).remove();
     addMsg("退出しました。");
 }
