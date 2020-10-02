@@ -86,5 +86,4 @@ function removeElements(peerId){
     video.srcObject = null;
     streams.querySelector(`[content-peer-id="${peerId}"]`).remove();
     pointers.querySelector(`[peer-id="${peerId}"]`).remove();
-    addMsg("退出しました。");
 }
