@@ -163,13 +163,21 @@ window.onDataRcv ={
             point.style.backgroundColor=data.color;
             point.querySelector("div").style.backgroundImage="url("+data.icon+")";
         }
-        //videoは読み込みが遅いことを考慮して3秒後に実施
-        setTimeout((src,data)=>{
-            var video = streams.querySelector(`[data-peer-id="${src}"]`);
-            if(video==null){return;}
+        var video = streams.querySelector(`[data-peer-id="${src}"]`);
+        if(video==null){
+            //videoは読み込みが遅いことを考慮して3秒後に実施
+            setTimeout((src,data)=>{
+                var video = streams.querySelector(`[data-peer-id="${src}"]`);
+                if(video==null){return;}
+                video = video.parentNode;
+                video.querySelector(".control").style.backgroundColor=data.color;
+                video.querySelector(".name").innerHTML=data.name;
+            },3000,src,data);
+        }else{
             video = video.parentNode;
             video.querySelector(".control").style.backgroundColor=data.color;
             video.querySelector(".name").innerHTML=data.name;
-        },3000,src,data);
+
+        }
     }
 }
