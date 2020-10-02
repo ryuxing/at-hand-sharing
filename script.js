@@ -85,8 +85,7 @@ async function main() {
     room.once('close', () => {
       addMsg("退出しました。");
       console.log(streams);
-      console.dir(streams.querySelectorAll('[conten-peer-id]'));
-      streams.querySelectorAll('[context-peer-id]').forEach(stream => {
+      streams.querySelectorAll('[content-peer-id]').forEach(stream => {
         console.log("close");
         console.log(stream.getAttribute("content-peer-id"));
         removeElements(stream.getAttribute("content-peer-id"));
