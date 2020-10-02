@@ -104,7 +104,7 @@ window.onDataRcv ={
         //srcのポインタをdataに反映させる
         //display-noneクラスを削除
         console.dir(data);
-        var canvas = document.querySelector(`canvas[peer-id="${data['peer-id']}"]`);
+        var canvas = streams.querySelector(`[peer-id="${data['peer-id']}"]`);
         var cursor = pointers.querySelector(`[peer-id="${src}"]`);
         var rect = canvas.getBoundingClientRect();
         cursor.style.top=((window.pageYOffset + rect.top)  + ((canvas.clientHeight/data.h)*data.y))+"px";
