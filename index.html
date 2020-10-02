@@ -26,18 +26,6 @@
 
       <div class="room">
         <div class="remote-streams" id="js-remote-streams">
-          <div class="stream">
-            <video id="js-local-stream"></video>
-            <canvas></canvas>
-            <div class="control">
-              <span class="name" bgcolor="#55FF55">自分</span>
-              <div class="buttons">
-                <div class="button pause">pause</div>
-                <div class="button save">save</div>
-                <div class="button clear">clear</div>
-              </div>
-            </div>
-          </div>
           <canvas id="tmp"></canvas>
         </div>
 
@@ -45,10 +33,11 @@
     </div>
     <script src="//cdn.webrtc.ecl.ntt.com/skyway-latest.js"></script>
     <script src="./key.js"></script>
-    <script src="./script.js"></script>
+    <script src="./element.js"></script>
+    <script src="./canvas.js"></script>
+    <script src="./script.js"></script>    
     <script src="./smartphone.js"></script>
     <div id="pointers">
-      <div class="pointer display-none" bgcolor="#55FF55"><div>You</div></div>
     </div>
     <form id ="touchcontrol" class="display-none">
       <div style="background-color:#AAFFCC; text-align:center;border-radius: 50%;width: 1em;height:1em;padding: 1em;margin: 1.5em auto;">&gt;&gt;</div>
