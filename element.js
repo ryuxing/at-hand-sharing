@@ -6,7 +6,7 @@ addPointer(peerId,color,icon,name)
 */
 window.pointers = document.getElementById("pointers");
 window.streams = document.getElementById("js-remote-streams");
-
+console.log(pointers);
 function addMsg(msg){
     var p = document.createElement("p");
     var d = new Date();
