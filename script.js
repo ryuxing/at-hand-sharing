@@ -5,11 +5,9 @@ var profile={
   icon:"./man.png"
 };
 async function main() {
-  const localVideo = document.getElementById('js-local-stream');
   const joinTriggerNoCam = document.getElementById('js-join-trigger-without-camera');
   const joinTrigger = document.getElementById('js-join-trigger');
   const leaveTrigger = document.getElementById('js-leave-trigger');
-  const remoteVideos = document.getElementById('js-remote-streams');
   const messages = document.getElementById('js-messages');
 
 
@@ -21,11 +19,6 @@ async function main() {
     .catch(console.error);
 
   // Render local stream
-  localVideo.muted = true;
-  localVideo.srcObject = localStream;
-  localVideo.playsInline = true;
-  await localVideo.play().catch(console.error);
-
   // eslint-disable-next-line require-atomic-updates
   const peer = (window.peer = new Peer({
     key: window.__SKYWAY_KEY__,
