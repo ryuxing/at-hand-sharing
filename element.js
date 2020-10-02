@@ -79,7 +79,7 @@ function addPointer(peerId,color="light-gray",icon='img/man.png',name=""){
     var pointer = document.createElement("div");
     var div = document.createElement("div");
     div.innerHTML=name;
-    div..style.backgroundImage="url("+icon+")";
+    div.style.backgroundImage="url("+icon+")";
     pointer.className="pointer display-none";
     pointer.setAttribute('peer-id',peerId);
     pointer.style.backgroundColor=color;
