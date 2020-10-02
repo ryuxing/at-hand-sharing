@@ -75,7 +75,7 @@ async function main() {
 
     // for closing room members
     room.on('peerLeave', peerId => {
-      var name = streams.querySelector(`#pointers [peer-id="${peerId}"]`).querySelector(".name").innerHTML;
+      var name = streams.querySelector(`[peer-id="${peerId}"]`).querySelector(".name").innerHTML;
       addMsg(name+" さん が退出しました。");
       removeElements(peerId);
       messages.textContent += `===${time} 切断：${peerId}  ===\n`;
