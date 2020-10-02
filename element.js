@@ -11,13 +11,15 @@ function addMsg(msg){
     var d = new Date();
     var t=document.createElement("span");
     t.style.fontWeight="bold";
-    var time= t.innerHTML;
+    var time= "";
     if(d.getHours()<10){time+='0';}
     time +=d.getHours()+":";
     if(d.getMinutes()<10){time+='0';}
     time +=d.getMinutes()+" /";
+    t.innerHTML=time;
     p.innerHTML=msg;
     p.prepend(t);
+
     document.getElementById('js-messages').append(p);
 }
 
