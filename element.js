@@ -62,6 +62,7 @@ async function addArea(stream,peerId,name=peerId,color="lightgray"){
         button.addEventListener("pointerdown",canvasControl[act]);
         buttons.append(button);
     }
+    control.append(buttons);
     //Add observer
     streams.append(div);
     var element = streams.querySelector(`[data-peer-id="${peerId}"]`);

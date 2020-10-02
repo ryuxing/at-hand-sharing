@@ -121,6 +121,7 @@ window.onDataRcv ={
             let obj = data[i];
             let canvas = streams.querySelector(`[peer-id="${data['peer-id']}"]`);
             console.dir(canvas);
+            console.log(streams.querySelector(`[peer-id="${data['peer-id']}"]`));
             console.dir(streams);
             console.warn(data);
             let xcvs = (canvas.clientWidth/obj.w )*obj.x;
