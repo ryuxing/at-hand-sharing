@@ -1,5 +1,5 @@
 //Observer
-const resizeObserver = new resizeObserver(async entries=>{
+window.resizeObserver = new resizeObserver(async entries=>{
     for (entry of entries){
         let canvas = entry.target.parentNode.getElementsByTagName("canvas")[0];
         if(Math.abs(((canvas.width/canvas.height)/(entry.target.clientWidth/entry.target.clientheight))-1)>0.1){
@@ -12,7 +12,7 @@ const resizeObserver = new resizeObserver(async entries=>{
 });
 
 //canvas control
-const canvasControl = {
+window.canvasControl = {
     pause: function(e){
         console.warn("pause",e);
     },
