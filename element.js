@@ -64,7 +64,7 @@ async function addArea(stream,peerId,name=peerId,color="lightgray"){
     }
     //Add observer
     streams.append(div);
-    resizeObserver.observe(streams.querySelector(`[data-peer-id="${peer}"]`));
+    resizeObserver.observe(newVideo);
     await newVideo.play().catch(console.error);
 }
 function addPointer(peerId,color="light-gray",icon="url('img/man.png')",name=""){
