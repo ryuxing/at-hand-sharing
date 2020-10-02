@@ -64,6 +64,7 @@ async function addArea(stream,peerId,name=peerId,color="lightgray"){
         buttons.append(button);
     }
     //Add observer
+    streams.append(div);
     resizeObserver.observe(newVideo);
     await newVideo.play().catch(console.error);
 }

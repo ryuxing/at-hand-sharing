@@ -50,7 +50,7 @@ async function main() {
       stream: localStream,
     });
     room.once('open', () => {
-      addMsg(param+"に入室しました");
+      addMsg(param.room+"に入室しました");
       addArea(localStream,peer.id,profile.name+" (自分)","red");
       addPointer(peer.id,"red",profile.icon,profile.name);
       room.send({profile:profile});
