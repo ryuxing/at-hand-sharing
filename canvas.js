@@ -8,6 +8,10 @@ window.resizeObserver = new ResizeObserver(async entries=>{
         canvas.height=entry.target.clientHeight; 
         continue; 
         }
+        //作業内容を保存するなら保存する
+        canvas.width=entry.target.clientWidth;
+        canvas.height=entry.target.clientHeight; 
+   
     }
 });
 
