@@ -75,7 +75,7 @@ async function main() {
 
     // for closing room members
     room.on('peerLeave', peerId => {
-      var name = streams.querySelector(`[context-peer-id="${peerId}"]`).querySelector(".name").innerHTML;
+      var name = streams.querySelector(`[content-peer-id="${peerId}"]`).querySelector(".name").innerHTML;
       addMsg(name+" さん が退出しました。");
       removeElements(peerId);
       messages.textContent += `===${time} 切断：${peerId}  ===\n`;
@@ -84,11 +84,12 @@ async function main() {
     // for closing myself
     room.once('close', () => {
       addMsg("退出しました。");
-      console.dir( streams.querySelectorAll('[context-peer-id]'));
+      console.log(streams);
+      console.dir(streams.querySelectorAll('[conten-peer-id]'));
       streams.querySelectorAll('[context-peer-id]').forEach(stream => {
         console.log("close");
-        console.log(stream.getAttribute("context-peer-id"));
-        removeElements(stream.getAttribute("context-peer-id"));
+        console.log(stream.getAttribute("content-peer-id"));
+        removeElements(stream.getAttribute("content-peer-id"));
       });
       alert("退出しました。");
     });
