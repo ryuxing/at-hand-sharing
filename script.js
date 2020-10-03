@@ -48,7 +48,8 @@ async function main() {
   joinTrigger.addEventListener('click', () => {
     var name = document.querySelector("input[name='name']").value;
     var color = document.getElementsByName("color").value;
-    var icon = document.querySelector("input[name='icon']").value;  
+    var icon = document.querySelector("input[name='icon']").value;
+    var roomName = document.querySelector("input[name='roomId']").value||"empty_room";
     profile.name=name||profile.name;
     profile.color=color||profile.color;
     profile.icon=icon||profile.icon;
@@ -60,7 +61,6 @@ async function main() {
     if (!peer.open) {
       return;
     }
-    var roomName = document.querySelector("input[name='roomId']").value||"empty_room";
     window.room = peer.joinRoom(roomName, {
       mode: "mesh",
       stream: localStream,
