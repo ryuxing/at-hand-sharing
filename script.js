@@ -47,7 +47,7 @@ async function main() {
   // Register join handler
   joinTrigger.addEventListener('click', () => {
     var name = document.querySelector("input[name='name']").value;
-    var color = document.getElementsByName("color").value;
+    var color = document.querySelector("div form").color.value;
     var icon = document.querySelector("input[name='icon']").value;
     var roomName = document.querySelector("input[name='roomId']").value||"empty_room";
     profile.name=name||profile.name;
