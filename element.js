@@ -10,6 +10,8 @@ setTimeout(()=>{
     document.getElementById("js-join-trigger").disabled= false;
     document.getElementById("js-join-trigger-without-camera").disabled= false;   
 },3000);
+var random =Math.floor(Math.random()*(document.getElementsByName("color").length),0);
+document.getElementsByName("color")[random].checked = true;
 function addMsg(msg){
     var p = document.createElement("p");
     var d = new Date();

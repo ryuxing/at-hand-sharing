@@ -22,10 +22,10 @@ async function main() {
   const joinTrigger = document.getElementById('js-join-trigger');
   const leaveTrigger = document.getElementById('js-leave-trigger');
   const messages = document.getElementById('js-messages');
-  const room = document.querySelector("input[name='roomId']").value;
+  const roomId = document.querySelector("input[name='roomId']").value;
   const name = document.querySelector("input[name='name']").value;
-  const color = document.getElementsByName("input[name='roomId']").value;
-  const icon = document.querySelector("input[name='color']").value;
+  const color = document.getElementsByName("color").value;
+  const icon = document.querySelector("input[name='icon']").value;
 
 
 
@@ -51,7 +51,7 @@ async function main() {
   // Register join handler
   joinTrigger.addEventListener('click', () => {
     profile.name=name||profile.name;
-    profile.color=name||profile.color;
+    profile.color=color||profile.color;
     profile.name=icon||profile.icon;
 
     stream.getVideoTracks()[0].stop();
@@ -61,7 +61,8 @@ async function main() {
     if (!peer.open) {
       return;
     }
-    window.room = peer.joinRoom(room||"empty_room", {
+    var roomName = roomId||"empty_room";
+    window.room = peer.joinRoom(roomName, {
       mode: "mesh",
       stream: localStream,
     });
