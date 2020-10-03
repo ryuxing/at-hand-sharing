@@ -209,14 +209,14 @@ button:disabled{
     padding-left:10px;
     border: none;
 }
-#room_option>div>label>span {
+#room_option div span {
     display: inline-block;
     width: 5em;
     text-align: center;
     border-right: 2px solid black;
 }
 
-#room_option form label span{
+#room_option form > label > span{
     border-radius: 100%;
     width: 1.3em;
     height: 1.3em;
