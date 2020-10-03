@@ -52,7 +52,7 @@ async function main() {
   joinTrigger.addEventListener('click', () => {
     profile.name=name||profile.name;
     profile.color=color||profile.color;
-    profile.name=icon||profile.icon;
+    profile.icon=icon||profile.icon;
 
     stream.getVideoTracks()[0].stop();
     document.querySelector(".init").remove();
@@ -67,9 +67,9 @@ async function main() {
       stream: localStream,
     });
     room.once('open', () => {
-      addMsg(param.room+"に入室しました");
-      addArea(localStream,peer.id,profile.name+" (自分)","red");
-      addPointer(peer.id,"red",profile.icon);
+      addMsg(roomName+"に入室しました");
+      addArea(localStream,peer.id,profile.name+" (自分)",profile.color);
+      addPointer(peer.id,profile.color,profile.icon);
       room.send({profile:profile});
     });
     room.on('peerJoin', peerId => {
