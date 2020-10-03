@@ -4,11 +4,29 @@ var profile={
   color:"pink",
   icon:"img/man.png"
 };
+var _GET = window.location.search.substring(1);
+var params=_GET.split("&");
+var param={};
+for (target of params){
+    if(target!=""){
+        target = target.split("=");
+        param[target[0]] = target[1];    
+    }
+}
+if('room' in param){
+  document.querySelector("input[name='roomId']").value= decodeURI(param.room);
+}
+
 async function main() {
   const joinTriggerNoCam = document.getElementById('js-join-trigger-without-camera');
   const joinTrigger = document.getElementById('js-join-trigger');
   const leaveTrigger = document.getElementById('js-leave-trigger');
   const messages = document.getElementById('js-messages');
+  const room = document.querySelector("input[name='roomId']").value;
+  const name = document.querySelector("input[name='name']").value;
+  const color = document.getElementsByName("input[name='roomId']").value;
+  const icon = document.querySelector("input[name='color']").value;
+
 
 
   var localStream = await navigator.mediaDevices
@@ -32,7 +50,10 @@ async function main() {
   },{passive:true});
   // Register join handler
   joinTrigger.addEventListener('click', () => {
-    console.dir(stream);
+    profile.name=name||profile.name;
+    profile.color=name||profile.color;
+    profile.name=icon||profile.icon;
+
     stream.getVideoTracks()[0].stop();
     document.querySelector(".init").remove();
     // Note that you need to ensure the peer has connected to signaling server
@@ -40,12 +61,7 @@ async function main() {
     if (!peer.open) {
       return;
     }
-    var param= getRoomId();
-    if(('room' in param)==false){
-      alert("Invalid URL!");
-      return;
-    }
-    window.room = peer.joinRoom(param.room, {
+    window.room = peer.joinRoom(room||"empty_room", {
       mode: "mesh",
       stream: localStream,
     });
@@ -97,20 +113,6 @@ async function main() {
 
     //マウスでのフォーカス追従（自分）
 
-    //RoomId自動入力(Get ?room=[yourRoom])
-    function getRoomId(){
-        var url = window.location.search.substring(1);
-        var params  =url.split('&');
-        var param={};
-        for (target of params){
-            console.log(target);
-            if(target!=""){
-                target = target.split("=");
-                param[target[0]] = target[1];    
-            }
-        }
-        return param;
-    };
     function pause(e,pause){
       var v = e.target.parentNode.parentNode.parentNode.querySelector("video");
       if(pause){

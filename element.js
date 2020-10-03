@@ -9,7 +9,7 @@ window.streams = document.getElementById("js-remote-streams");
 setTimeout(()=>{
     document.getElementById("js-join-trigger").disabled= false;
     document.getElementById("js-join-trigger-without-camera").disabled= false;   
-},5000);
+},3000);
 function addMsg(msg){
     var p = document.createElement("p");
     var d = new Date();

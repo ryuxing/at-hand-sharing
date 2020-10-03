@@ -189,6 +189,64 @@ button{
 
 }
 button:disabled{
-    background-color: gray;
+    background-color: gray !important;
     color: white;
+}
+/*オプション*/
+#room_option{
+    text-align: center;
+}
+    
+
+
+#room_option input[type="text"]{
+    width: calc(100% - 5em);
+    background-color: #ffffff00;
+    font-size: 1.3em;
+    margin: 0;
+    padding: 0;
+    margin-left: 10px;
+    padding-left:10px;
+    border: none;
+}
+#room_option span {
+    display: inline-block;
+    width: 5em;
+    text-align: center;
+    border-right: 2px solid black;
+}
+
+#room_option label span{
+    border-radius: 100%;
+    width: 1.3em;
+    height: 1.3em;
+    display: inline-block;
+    margin: auto .5em;
+    border: 1px solid black;
+    cursor: pointer;
+}
+#room_option input[type="radio"]:checked +span{
+    background-image: url("img/check.svg");
+    background-size: cover;
+}
+
+#room_option form{
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+}
+#room_option div{
+    text-align: left;
+    display: inline-block;
+    font-size: 1.3em;
+    border-radius: 2em;
+    vertical-align: middle;
+    padding: .35em;
+    margin: .5em;
+    width: 70%;
+    padding-left:1em;
+    padding-right: 1.4em;
+    border: 1px solid gray;
+    background-color: #ffffffdd;
+    bottom:10px;
 }

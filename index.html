@@ -20,6 +20,23 @@
       <h1>回路共有システム</h1>
       <video id="init-stream"></video>
       <div class="buttons">
+        <div id="room_option" class="">
+          <div><span>ルームID</span><input type="text" name="roomId" placeholder="ルームID"></div>
+          <div><span>名前</span><input type="text" name="name" placeholder="名前"></div>
+          <div class="display-none"><span>アイコン</span><input type="text" name="icon" placeholder="アイコン画像URI"></div>
+          <div>
+            <span>表示色</span>
+            <form>
+              <label><input type="radio" name="color" value="red"><span style="background-color: red;"></span></label>
+              <label><input type="radio" name="color" value="pink"><span style="background-color: pink;"></span></label>
+              <label><input type="radio" name="color" value="orange"><span style="background-color: orange;"></span></label>
+              <label><input type="radio" name="color" value="yellow"><span style="background-color: yellow;"></span></label>
+              <label><input type="radio" name="color" value="lightgreen"><span style="background-color: lightgreen;"></span></label>
+              <label><input type="radio" name="color" value="lightblue"><span style="background-color: lightblue;"></span></label>
+              <label><input type="radio" name="color" value="plum"><span style="background-color:plum;"></span></label>
+            </form>
+          </div>
+        </div>
         <button id="js-join-trigger" type="button" disabled>参加</button>
         <button id="js-join-trigger-without-camera" style="background-color: lightgray;" disabled>ビデオなしで参加</button>  
       </div>
