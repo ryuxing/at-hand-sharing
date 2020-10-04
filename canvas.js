@@ -13,7 +13,7 @@ window.resizeObserver = new ResizeObserver(async entries=>{
         tmp_c.width = entry.target.clientWidth;
         tmp_c.height=entry.target.clientHeight;
         var ctx = tmp_c.getContext("2d");
-        ctx.scale(tmp_c.width/entry.target.clientWidth,tmp_c.width/entry.target.clientWidth);
+        ctx.scale(tmp_c.width/camvas.width,tmp_c.height/canvas.height);
         ctx.drawImage(canvas,0,0); 
         //リサイズ
         canvas.width=entry.target.clientWidth;
