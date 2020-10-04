@@ -52,7 +52,7 @@ async function main() {
     profile.name=name||profile.name;
     profile.color=color||profile.color;
     profile.icon=icon||profile.icon;
-
+    history.replaceState("",roomName+" | 回路共有システム","?room="+roomName);
     stream.getVideoTracks()[0].stop();
     document.querySelector(".init").remove();
     // Note that you need to ensure the peer has connected to signaling server
