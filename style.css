@@ -395,3 +395,6 @@ button{
     90%{opacity: 100%;}
     100%{opacity: 0%;}
 }
+.img img{
+    width: 40%;
+}

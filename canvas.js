@@ -70,7 +70,6 @@ window.canvasControl = {
         tmp_c.contexts = {bg:null,draw:null};
         tmp_c.contexts.bg=tmp_c.getContext("2d");
         tmp_c.contexts.draw =tmp_c.getContext("2d");
-        tmp_c.contexts.draw.scale(2,2);
         tmp_c.contexts.bg.drawImage(video,0,0);
         tmp_c.contexts.draw.scale(v_info.width/canvas.width,v_info.height/canvas.height);
         tmp_c.contexts.draw.drawImage(canvas,0,0);
