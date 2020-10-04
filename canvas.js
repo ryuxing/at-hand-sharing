@@ -8,10 +8,19 @@ window.resizeObserver = new ResizeObserver(async entries=>{
         canvas.height=entry.target.clientHeight; 
         continue; 
         }
-        //作業内容を保存するなら保存する
+        //作業内容を保存
+        var tmp_c = document.createElement("canvas");
+        tmp_c.width = entry.target.clientWidth;
+        tmp_c.height=entry.target.clientHeight;
+        var ctx = tmp_c.getContext("2d");
+        ctx.scale(tmp_c.width/entry.target.clientWidth,tmp_c.width/entry.target.clientWidth);
+        ctx.drawImage(canvas,0,0); 
+        //リサイズ
         canvas.width=entry.target.clientWidth;
         canvas.height=entry.target.clientHeight; 
-   
+        //復元
+        canvas.contexts.draw.drawImage(tmp_c,0,0);
+        delete tmp_c;
     }
 });
 
