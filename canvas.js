@@ -13,7 +13,6 @@ window.resizeObserver = new ResizeObserver(async entries=>{
         tmp_c.width = entry.target.clientWidth;
         tmp_c.height=entry.target.clientHeight;
         var ctx = tmp_c.getContext("2d");
-        ctx.scale(tmp_c.width/canvas.width,tmp_c.height/canvas.height);
         ctx.drawImage(canvas,0,0); 
         //リサイズ
         canvas.width=entry.target.clientWidth;
@@ -21,7 +20,9 @@ window.resizeObserver = new ResizeObserver(async entries=>{
         //復元
         if(!resizing){
             setTimeout((tmp_c)=>{
+                canvas.contexts.draw.scale(canvas.width/tmp_c.width,canvas.height/tmp_c.height);
                 canvas.contexts.draw.drawImage(tmp_c,0,0);
+                canvas.contexts.draw.scale(tmp_c.width/canvas.width,tmp_c.height/canvas.height);
                 delete tmp_c;
                 resizing=false;
             },300,tmp_c);
