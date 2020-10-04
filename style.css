@@ -377,7 +377,8 @@ button{
     cursor: pointer;
 }
 .popup{
-    top: 10px;
+    position: absolute;
+    top: 30px;
     left: 10px;
     padding:1em;
     background-color: #000000AA;
@@ -386,6 +387,7 @@ button{
     animation-name: popup;
     animation-duration: 5s;
     animation-fill-mode: forwards;
+    z-index: 99;
 }
 @keyframes popup{
     0% {opacity: 0%;}
