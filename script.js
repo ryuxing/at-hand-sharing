@@ -66,7 +66,7 @@ async function main() {
     });
     room.once('open', () => {
       addMsg(roomName+"に入室しました");
-      if(localStoream!=null){
+      if(localStream!=null){
         addArea(localStream,peer.id,profile.name+" (自分)",profile.color);
       }
       addPointer(peer.id,profile.color,profile.icon);
