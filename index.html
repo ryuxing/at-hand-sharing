@@ -10,14 +10,36 @@
   </head>
   <body>
     <div class="container">
-      <div style="background: #00000030; padding: .5px; width:100%; max-width:30em;">
-        <p>=====Message=====</p>
-        <div class="messages" id="js-messages"></div>
-        <button id="js-leave-trigger">退出</button>
-      </div>
     </div>
     <div class="header">
-      <div><h2 name="h2_roomId"></h2><div>▼</div></div>
+      <div>
+        <h2 name="h2_roomId">Room_id</h2><button id="js-leave-trigger">退出</button>
+      </div>
+
+      <!--<div>▼</div>
+      <div class="hover">
+        <button id="clearAll">全ての書込をクリア</button>
+        <button id="saveAll">全ての回路を保存</button>  
+      </div>-->
+    </div>
+    <div class="left">
+      <input type="checkbox" id="show_menu">
+      <label for="show_menu"></label>
+      <div class="messages">
+        <div class="right-button"></div>
+        <h3>メッセージ</h3>
+        <div  id="js-messages" class="scroll"></div>
+      </div>
+      <div class="member">
+        <div class="right-button"></div>
+        <h3>メンバー</h3>
+        <div class="scroll"></div>
+      </div>
+      <div class="option">
+        <div class="right-button"></div>
+        <h3>オプション</h3>
+
+      </div>
     </div>
     <div class="init">
       <h1>回路共有システム</h1>
@@ -47,7 +69,6 @@
 
       <div class="room">
         <div class="remote-streams" id="js-remote-streams">
-          <canvas id="tmp"></canvas>
         </div>
 
       <p class="meta" id="js-meta"></p>
@@ -56,7 +77,6 @@
     </div>
     <div class="img"></div>
     <form id ="touchcontrol" class="display-none">
-      <div style="background-color:#AAFFCC; text-align:center;border-radius: 50%;width: 1em;height:1em;padding: 1em;margin: 1.5em auto;">&gt;&gt;</div>
       <input type="radio" name="touchAction" value="scroll" id="scroll"><label for="scroll"><img src="img/scroll.svg"></label>
       <input type="radio" name="touchAction" value="point" id="point"><label for="point"><img src="img/select.svg"></label>
       <input type="radio" name="touchAction" value="draw" id="draw"><label for="draw"><img src="img/pen.svg"></label>

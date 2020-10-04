@@ -21,11 +21,15 @@ function addMsg(msg){
     if(d.getHours()<10){time+='0';}
     time +=d.getHours()+":";
     if(d.getMinutes()<10){time+='0';}
-    time +=d.getMinutes()+" /";
+    time +=d.getMinutes()+" |";
     t.innerHTML=time;
     p.innerHTML=msg;
     p.prepend(t);
-
+    var tmp = document.createElement("div");
+    tmp.className="popup";
+    tmp.innerHTML = p.innerHTML;
+    document.getElementsByTagName("body")[0].append(tmp);
+    setTimeout((ele)=>{ele.remove();},5000,tmp);
     document.getElementById('js-messages').append(p);
 }
 
