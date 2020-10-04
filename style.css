@@ -45,7 +45,7 @@ canvas{
     z-index:11;
     top:0;
     left:0;
-}
+}　
 .pointer{
     top: 0;
     left:0;
@@ -98,11 +98,13 @@ canvas{
 .button{
     display: inline-block;
     background-color: darkblue;
+    font-size: 1em;
     color:white;
     border-radius: 2em;
     transition: background .3s, color .3s;
     margin-left: .5em;
     padding: .5em;
+    bottom: 0;
 }
 .button:hover{
     color:darkblue;
@@ -184,7 +186,7 @@ input[type="radio"]{
     left: 0%;
 
 }
-button{
+button:not(.button){
     font-size: 1.5em;
     border-radius: 2em;
     padding: .5em;

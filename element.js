@@ -64,11 +64,11 @@ async function addArea(stream,peerId,name=peerId,color="lightgray"){
     var buttons = document.createElement("div");
     var action = ["pause","save","clear"];
     for(act in action){
-        let button = document.createElement("div");
+        let button = document.createElement("button");
         button.classList.add("button");
         button.classList.add(action[act]);
         button.innerHTML=action[act];
-        button.setAttribute("onclick",canvasControl[action[act]]);
+        button.addEventListener("pointerdown",canvasControl[action[act]]);
         buttons.append(button);
     }
     control.append(buttons);
