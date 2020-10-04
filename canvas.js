@@ -22,13 +22,32 @@ window.canvasControl = {
     },
     save:  function(e){
         console.warn("save",e);
-    },
-    clear: function(e){
-        var div = e.path.querySelector("div .stream");
+        var div = e.path[3];
+        var video = div.querySelector("video");
+        var v_info = video.srcObject.getVideoTracks()[0].getSettings();
+        console.log(v_info);
         var canvas = div.querySelector("canvas");
-        canvas.width = canvas+1;
-        canvas.width = canvas-1;
-        console.warn("clear",e);
+        var tmp_c = document.createElement("canvas");
+        tmp_c.width = canvas.width;
+        tmp_c.height = canvas.height;
+        tmp_c.contexts = {bg:null,draw:null};
+        tmp_c.contexts.bg=tmp_c.getContext("2d");
+        tmp_c.contexts.draw =tmp_c.getContext("2d");
+        tmp_c.contexts.bg.scale(tmp_c.width/v_info.width,tmp_c.width/v_info.width);
+        tmp_c.contexts.bg.drawImage(video,0,0);
+        tmp_c.contexts.draw.scale(v_info.width/tmp_c.width,v_info.width/tmp_c.width);
+        tmp_c.contexts.draw.drawImage(canvas,0,0);
+        var url = tmp_c.toDataURL();
+        var img =createElement("img");
+        img.src=url;
+        document.querySelector("div.img").append(img);
+        tmp_c.remove();
+        },
+    clear: function(e){
+        var div = e.path[3];
+        var canvas = div.querySelector("canvas");
+        canvas.width = canvas.width+1;
+        canvas.width = canvas.width-1;
         var id= div.getAttribute("content-peer-id");
         room.send({clear:id});
     }
@@ -153,8 +172,8 @@ window.onDataRcv ={
     clear: function(src,canvas){
         var canvas = streams.querySelector(`[peer-id="${canvas}"]`);
         //保存するならここで
-        canvas.width = canvas+1;
-        canvas.width = canvas-1;
+        canvas.width = canvas.width+1;
+        canvas.width = canvas.width-1;
         /*
         w = e.target.clientWidth;
         h = e.target.clientHeight;  
