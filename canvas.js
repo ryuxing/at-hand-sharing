@@ -18,7 +18,28 @@ window.resizeObserver = new ResizeObserver(async entries=>{
 //canvas control
 window.canvasControl = {
     pause: function(e){
-        console.warn("pause",e);
+        var div = e.path[3];
+        var video = div.querySelector("video");
+        var v_info = video.srcObject.getVideoTracks()[0].getSettings();
+        console.log(v_info);
+        var canvas = div.querySelector("canvas");
+        //すでに止まってるとき
+        if("bg" in canvas.contexts){
+            canvas.contexts.bg.clearRect(0,0,canvas.width,canvas,height);
+            delete canvas.contexts.bg;
+        }else{
+            var tmp_c = document.createElement("canvas");
+            tmp_c.width = canvas.width;
+            tmp_c.height= canvas.height; 
+            var ctx = tmp_c.getContext("2d");
+            canvas.contexts.bg = canvas.getContext("2d");
+            ctx.drawImage(canvas,0,0);
+            canvas.contexts.bg.scale(canvas.width/v_info.width,canvas.width/v_info.width);
+            canvas.contexts.bg.drawImage(video,0,0);
+            canvas.contexts.bg.scale(v_info.width/canvas.width,v_info.width/canvas.width);
+            canvas.contexts.draw.drawImage(tmp_c,0,0);
+            delete tmp_c;
+        }
     },
     save:  function(e){
         console.warn("save",e);
@@ -28,17 +49,17 @@ window.canvasControl = {
         console.log(v_info);
         var canvas = div.querySelector("canvas");
         var tmp_c = document.createElement("canvas");
-        tmp_c.width = canvas.width;
-        tmp_c.height = canvas.height;
+        tmp_c.width = v_info.width * 2;
+        tmp_c.height = v_info.height * 2;
         tmp_c.contexts = {bg:null,draw:null};
         tmp_c.contexts.bg=tmp_c.getContext("2d");
         tmp_c.contexts.draw =tmp_c.getContext("2d");
-        tmp_c.contexts.bg.scale(tmp_c.width/v_info.width,tmp_c.width/v_info.width);
+        tmp_c.contexts.draw.scale(2,2);
         tmp_c.contexts.bg.drawImage(video,0,0);
-        tmp_c.contexts.draw.scale(v_info.width/tmp_c.width,v_info.width/tmp_c.width);
+        tmp_c.contexts.draw.scale(v_info.width/canvas.width,v_info.width/canvas.width);
         tmp_c.contexts.draw.drawImage(canvas,0,0);
         var url = tmp_c.toDataURL();
-        var img =createElement("img");
+        var img =document.createElement("img");
         img.src=url;
         document.querySelector("div.img").append(img);
         tmp_c.remove();
@@ -46,6 +67,7 @@ window.canvasControl = {
     clear: function(e){
         var div = e.path[3];
         var canvas = div.querySelector("canvas");
+        if(canvas)
         canvas.width = canvas.width+1;
         canvas.width = canvas.width-1;
         var id= div.getAttribute("content-peer-id");

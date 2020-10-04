@@ -34,12 +34,18 @@ video{
 canvas{
     background-color: #FFFFFF00;
     position: absolute;
-    z-index:11;
+    z-index:12;
     top:0;
     left:0;
 
 }
-
+.stream > img{
+    background-color: #FFFFFF00;
+    position: absolute;
+    z-index:11;
+    top:0;
+    left:0;
+}
 .pointer{
     top: 0;
     left:0;

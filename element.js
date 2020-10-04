@@ -45,6 +45,7 @@ async function addArea(stream,peerId,name=peerId,color="lightgray"){
     canvas.setAttribute('peer-id',peerId);
     canvas.contexts = {};
     canvas.contexts[peerId]=canvas.getContext("2d");
+    canvas.contexts.draw=canvas.getContext("2d");
     canvas.addEventListener("pointermove",focusmove);
     canvas.addEventListener("pointerenter",onFocus);
     canvas.addEventListener("pointerout",offFocus);
