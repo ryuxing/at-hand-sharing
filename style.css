@@ -95,6 +95,7 @@ canvas{
     color:white;
     border-radius: 2em;
     transition: background .3s, color .3s;
+    margin-left: .5em;
     padding: .5em;
 }
 .button:hover{

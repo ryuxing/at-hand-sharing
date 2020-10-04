@@ -24,7 +24,13 @@ window.canvasControl = {
         console.warn("save",e);
     },
     clear: function(e){
+        var div = e.path.querySelector("div .stream");
+        var canvas = div.querySelector("canvas");
+        canvas.width = canvas+1;
+        canvas.width = canvas-1;
         console.warn("clear",e);
+        var id= div.getAttribute("content-peer-id");
+        room.send({clear:id});
     }
 };
 //local drawing
@@ -145,6 +151,10 @@ window.onDataRcv ={
         cursor.classList.add("display-none");
     },
     clear: function(src,canvas){
+        var canvas = streams.querySelector(`[peer-id="${canvas}"]`);
+        //保存するならここで
+        canvas.width = canvas+1;
+        canvas.width = canvas-1;
         /*
         w = e.target.clientWidth;
         h = e.target.clientHeight;  
@@ -158,7 +168,7 @@ window.onDataRcv ={
         if(data.icon==""){data.icon="img/man.png";}
         var point = pointers.querySelector(`[peer-id="${src}"]`);
         if(point==null){
-            point = addPointer(src,data.color,"url('"+data.icon+"')");
+            point = addPointer(src,data.color,data.icon);
         }else{
             point.style.backgroundColor=data.color;
             point.querySelector("div").style.backgroundImage="url("+data.icon+")";
