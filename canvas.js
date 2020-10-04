@@ -19,11 +19,18 @@ window.resizeObserver = new ResizeObserver(async entries=>{
         canvas.width=entry.target.clientWidth;
         canvas.height=entry.target.clientHeight; 
         //復元
-        canvas.contexts.draw.drawImage(tmp_c,0,0);
-        delete tmp_c;
+        if(!resizing){
+            setTimeout((tmp_c)=>{
+                canvas.contexts.draw.drawImage(tmp_c,0,0);
+                delete tmp_c;
+                resizing=false;
+            },300);
+        }else{
+            resizing=true;
+        }
     }
 });
-
+window.resizing =false;
 //canvas control
 window.canvasControl = {
     pause: function(e){
