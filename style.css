@@ -45,7 +45,7 @@ canvas{
     z-index:11;
     top:0;
     left:0;
-}　
+}
 .pointer{
     top: 0;
     left:0;
@@ -66,7 +66,6 @@ canvas{
 .pointer div{
     transform-origin: center center;
     transform: rotate(45deg);
-    translate: -50%;
     border-radius: 2em 2em 2em;
     margin:0;
     padding: 0;
