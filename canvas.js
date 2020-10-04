@@ -8,25 +8,24 @@ window.resizeObserver = new ResizeObserver(async entries=>{
         canvas.height=entry.target.clientHeight; 
         continue; 
         }
-        //作業内容を保存&setTimeoutで復元
+        //作業内容を保存
+        var tmp_c = document.createElement("canvas");
+        tmp_c.width = entry.target.clientWidth;
+        tmp_c.height=entry.target.clientHeight;
+        var ctx = tmp_c.getContext("2d");
+        ctx.scale(tmp_c.width/canvas.width,tmp_c.height/canvas.height);
+        ctx.drawImage(canvas,0,0); 
+        //リサイズ
+        canvas.width=entry.target.clientWidth;
+        canvas.height=entry.target.clientHeight; 
+        //復元
         if(!resizing){
-            var tmp_c = document.createElement("canvas");
-            tmp_c.width = entry.target.clientWidth;
-            tmp_c.height=entry.target.clientHeight;
-            var ctx = tmp_c.getContext("2d");
-            ctx.scale(tmp_c.width/canvas.width,tmp_c.height/canvas.height);
-            ctx.drawImage(canvas,0,0);     
             setTimeout((tmp_c)=>{
                 canvas.contexts.draw.drawImage(tmp_c,0,0);
                 delete tmp_c;
                 resizing=false;
             },300,tmp_c);
         }
-
-        //リサイズ
-        canvas.width=entry.target.clientWidth;
-        canvas.height=entry.target.clientHeight; 
-
     }
     resizing=true;
 });
