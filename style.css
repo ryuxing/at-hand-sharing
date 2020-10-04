@@ -10,7 +10,8 @@
     background: rgba(128,128,128,.7) ;
 }*/
 body{
-    overflow:hidden ,scroll;
+    overflow:hidden scroll;
+    user-select: none;
 }
 .remote-streams{
     display: grid;
@@ -104,6 +105,7 @@ canvas{
     margin-left: .5em;
     padding: .5em;
     bottom: 0;
+    border: none;
 }
 .button:hover{
     color:darkblue;
