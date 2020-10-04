@@ -12,6 +12,7 @@
 body{
     overflow:hidden scroll;
     user-select: none;
+    background: #FFFFF5;
 }
 .remote-streams{
     display: grid;
@@ -202,6 +203,118 @@ button:disabled{
     background-color: gray !important;
     color: white;
 }
+/*ヘッダー*/
+.header{
+    transition: height .5s;
+    position: fixed;
+    width:100%;
+    height:auto;
+    background-color:#CCCCCC;
+    top:0;
+    left:0;
+    z-index: 50;
+}
+.header > div{
+    text-align: center;
+}
+.header > div:first-child h2{
+    margin-block-start: .3em;
+    margin-block-end: .3em;
+}
+.header > div:first-child button {
+    position: absolute;
+    width:auto;
+    height:1.8em;
+    top:0px;
+    margin-top: 3px;
+    padding: .2em .5em;
+    right:5px;
+    background: #fd7096;
+}
+/*レフトボタン*/
+.left > div{
+    position: fixed;
+    width:80%;
+    left:-83%;
+    height: calc(100% - 4em);
+    top:3.1em;
+    padding-left: 2%;
+    transition: left .5s;
+    background-color: #EEEEEE;
+    border: black solid 1px;
+    border-left: none;
+    z-index: 31;
+}
+
+.left > div > .right-button{
+    border: black solid 2px;
+    border-left: none;
+    position: relative;
+    background-color: #EEEEEE;
+    border-radius: 0 .25em .25em 0;
+    font-size: 2em;
+    width: 1.5em;
+    height:1.5em;
+    margin-left: 0;
+    padding-left: 2.5%;
+    margin-right: 0;
+    background-size:1.2em 1.2em ;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: left .3s;
+
+}
+.left > .messages > .right-button{
+    transition: background .3s;
+    top: 0em;
+    background-image: url("img/message.svg");
+}
+
+.left > .member > .right-button{
+    top: 1.5em;
+    background-image: url("img/member.svg");
+}
+.left > .option > .right-button{
+    top: 3em;
+    background-image: url("img/menu.svg");
+}
+.left > div:hover{
+    left:0%;
+    z-index: 32;
+}
+.scroll{
+    overflow-y: scroll;
+}
+.left label{
+    display: block;
+    position: fixed;
+    text-align: center;
+    top:5px;
+    left:5px;
+    font-size: 1.6em;
+    width:4em;
+    height: 1.5em;
+    border-radius: 1em;
+    background-color: lightcyan;
+    border: black solid 1px;
+
+    z-index: 51;
+}
+.left label:before{
+    display: inline-block;
+    content: "menu";
+}
+#show_menu:checked  +label:before{
+    content: "close";
+}
+#show_menu:checked ~ div .right-button{
+    left: 100%;
+
+}
+
+.left >.new > .right-button{
+    background-color: orange;
+}
 /*オプション*/
 #room_option{
     text-align: center;
@@ -259,4 +372,24 @@ button:disabled{
     border: 1px solid gray;
     background-color: #ffffffdd;
     bottom:10px;
+}
+button{
+    cursor: pointer;
+}
+.popup{
+    top: 10px;
+    left: 10px;
+    padding:1em;
+    background-color: #000000AA;
+    border-radius: .5em;
+    color: white;
+    animation-name: popup;
+    animation-duration: 5s;
+    animation-fill-mode: forwards;
+}
+@keyframes popup{
+    0% {opacity: 0%;}
+    8% {opacity: 100%;}
+    90%{opacity: 100%;}
+    100%{opacity: 0%;}
 }
