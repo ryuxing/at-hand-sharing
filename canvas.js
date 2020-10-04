@@ -247,10 +247,12 @@ window.onDataRcv ={
 
         }
         //最初のお知らせ部分の文字更新
-        var doms = document.getElementsByClassName(src);
-        for(dom of doms){
-            dom.innerHTML=data.name+" さん ";
-            dom.className="";
-        }
+        setTimeout((src,data)=>{
+            var doms = document.getElementsByClassName(src);
+            for(dom of doms){
+                dom.innerHTML=data.name+" さん ";
+                dom.className="";
+            }
+            },500,src,data);
     }
 }
