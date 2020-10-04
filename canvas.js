@@ -123,8 +123,7 @@ function focusmove(e){
         val.draw=JSON.parse(JSON.stringify(drawing));
     }
     room.send(val);
-    drawing=[];
-    setTimeout(()=>{focusSendable=true;},150);
+    setTimeout(()=>{focusSendable=true;},110);
 }
 function onFocus(e){
     pointers.querySelector(`[peer-id="${peer.id}"]`).classList.remove("display-none");
