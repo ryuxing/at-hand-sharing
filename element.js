@@ -68,7 +68,7 @@ async function addArea(stream,peerId,name=peerId,color="lightgray"){
         button.classList.add("button");
         button.classList.add(action[act]);
         button.innerHTML=action[act];
-        button.addEventListener("pointerdown",canvasControl[action[act]]);
+        button.setAttribute("onclick",canvasControl[action[act]]);
         buttons.append(button);
     }
     control.append(buttons);
