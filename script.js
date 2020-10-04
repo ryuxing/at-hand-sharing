@@ -41,7 +41,6 @@ async function main() {
   joinTriggerNoCam.addEventListener("click",()=>{
     localStream.getTracks()[0].stop();
     localStream = null;
-    localVideo.parentNode.remove();
     joinTrigger.click();
   },{passive:true});
   // Register join handler
