@@ -1,18 +1,9 @@
-/*#js-local-stream{
-    width:100px;
-    position: fixed;
-    display: block;
-    right:10px;
-    bottom:10px;
-    border-radius: 10px;
-    border: 1px solid rgba(128,128,128,.7);
-    padding: 0;
-    background: rgba(128,128,128,.7) ;
-}*/
 body{
     overflow:hidden scroll;
     user-select: none;
-    background: #FFFFF5;
+    background: #f5f5f5;
+    width:100%;
+    font-family: "M PLUS 1p";
 }
 .remote-streams{
     display: grid;
@@ -41,6 +32,7 @@ canvas{
     left:0;
 
 }
+.room{margin-top: 2em;}
 .stream > img{
     background-color: #FFFFFF00;
     position: absolute;
@@ -60,7 +52,7 @@ canvas{
     font-size: 1.5em;
     background-color:red;
     pointer-events: none;
-    z-index: 20;
+    z-index: 80;
     transform-origin: 0px 0px 0px;
     transform: rotate(-45deg);
     overflow: hidden;
@@ -124,11 +116,12 @@ canvas{
 #touchcontrol{
     display: block;
     position: fixed;
-    right:0;
-    bottom:3em;
-    border-radius: 2em 0 0 2em ;
+    left:calc(100% - 4em);
+    bottom:50%;
+    transform: translateY(55%);
+    border-radius: 1.5em 0 0 1.5em ;
     width:3em;
-    height:20em;
+    height:13em;
     padding: .5em;
     background:#FFAA00AA;
     z-index: 50;
@@ -141,7 +134,7 @@ canvas{
     width: 2em;
     height:2em;
     padding: .5em;
-    margin: 1.5em auto;
+    margin: 1em auto;
     text-align: center;
     transition: background .3s, width .3s;
 }
@@ -199,6 +192,17 @@ button:not(.button){
     bottom:10px;
 
 }
+.leave_btn::before{
+    content: "";
+    width: 1em;
+    height: 1em;
+    display: inline-block;
+    background: url("./img/baseline_exit_to_app_white_18dp.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position:center center;
+    
+}
 button:disabled{
     background-color: gray !important;
     color: white;
@@ -209,7 +213,9 @@ button:disabled{
     position: fixed;
     width:100%;
     height:auto;
-    background-color:#CCCCCC;
+    color: #5f5f5f;
+    background-color:#f5f5f5;
+    box-shadow:0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
     top:0;
     left:0;
     z-index: 50;
@@ -225,11 +231,16 @@ button:disabled{
     position: absolute;
     width:auto;
     height:1.8em;
+    font-weight: 700;
     top:0px;
     margin-top: 3px;
     padding: .2em .5em;
     right:5px;
-    background: #fd7096;
+    background: #ff0447;
+    color: #ffeaf0;
+    border-radius: .4em;
+    box-shadow:1px 1px 1px 1px rgba(100,0,0,.14), 0 3px 1px -2px rgba(100,0,0,.2), 0 1px 5px 0 rgba(100,0,0,.12);
+
 }
 /*レフトボタン*/
 .left > div{
@@ -292,20 +303,19 @@ button:disabled{
     top:5px;
     left:5px;
     font-size: 1.6em;
-    width:4em;
+    width:1.6em;
     height: 1.5em;
-    border-radius: 1em;
-    background-color: lightcyan;
-    border: black solid 1px;
-
+    border-radius: .2em;
     z-index: 51;
+    box-shadow:1px 1px 1px 1px rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
+
 }
 .left label:before{
     display: inline-block;
-    content: "menu";
+    content: "≡";
 }
 #show_menu:checked  +label:before{
-    content: "close";
+    content: "×";
 }
 #show_menu:checked ~ div .right-button{
     left: 100%;
@@ -377,9 +387,10 @@ button{
     cursor: pointer;
 }
 .popup{
-    position: absolute;
+    position: fixed;
     top: 30px;
-    left: 10px;
+    left: 50%;
+    transform: translate(-50%);
     padding:1em;
     background-color: #000000AA;
     border-radius: .5em;
@@ -397,4 +408,59 @@ button{
 }
 .img img{
     width: 40%;
+}
+/*フルスクリーン*/
+.full-screen{
+    position: fixed !important;
+    top :3em;
+    left: 0;
+    display: block;
+    width:100%;
+    height: calc(100vh - 3em);
+    background-color: #000000CC;
+    z-index:25;
+}
+.full-screen .control{
+    position: fixed !important;
+    bottom:0;
+    top:auto;
+    left:50%;
+    transform: translate(-50%);
+    height:auto;
+    width:70%;
+    max-width: 500px;
+    border-radius: 1em;
+    z-index:26;
+    opacity: .8;
+    pointer-events: none;
+    transition: all .3s;
+    font-size: 70%;
+}
+.full-screen .control button{
+    pointer-events: auto;
+}
+
+.full-screen video{
+    border: solid 2px white;
+}
+.full-screen video , .full-screen canvas{
+    position: absolute;
+    left:50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.full-screen.width-100 video{
+    width: calc(100% - 6px);
+    height: auto;
+}
+.full-screen.height-100 video{
+    width: auto;
+    height:calc(100% - 3em);
+}
+.full-screen.height-100 .control{
+    opacity:.6;
+    left:0;
+    transform: translate(0%);
+    width:auto;
 }

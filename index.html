@@ -3,91 +3,97 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>回路共有システム</title>
-    <!--<link rel="stylesheet" href="../_shared/style.css">-->
-    <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <title data-i18n="title">回路共有システム</title>
+    <link rel="icon" type="image/png" href="/img/icon.png">
+		<link rel="shortcut icon" href="/img/icon.png" />
+		<link rel="apple-touch-icon" href="/img/icon.png" />
+    <link href="https://fonts.googleapis.com/css?family=M+PLUS+1p" rel="stylesheet">    <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <div class="container">
-    </div>
     <div class="header">
       <div>
-        <h2 name="h2_roomId">Room_id</h2><button id="js-leave-trigger">退出</button>
+        <h2 id="h2_roomId">Room_id</h2><button id="js-leave-trigger"><span class="leave_btn"data-i18n="leave_btn">退出</span></button>
       </div>
 
-      <!--<div>▼</div>
-      <div class="hover">
-        <button id="clearAll">全ての書込をクリア</button>
-        <button id="saveAll">全ての回路を保存</button>  
-      </div>-->
     </div>
     <div class="left">
       <input type="checkbox" id="show_menu">
       <label for="show_menu"></label>
       <div class="messages">
         <div class="right-button"></div>
-        <h3>メッセージ</h3>
+        <h3 data-i18n="messages">メッセージ</h3>
         <div  id="js-messages" class="scroll"></div>
       </div>
       <div class="member">
         <div class="right-button"></div>
-        <h3>メンバー</h3>
+        <h3 data-i18n="members">メンバー</h3>
         <div class="scroll"></div>
       </div>
       <div class="option">
         <div class="right-button"></div>
-        <h3>オプション</h3>
-
+        <h3 data-i18n="options">オプション</h3>
+        <button data-i18n="save_all_circuit">全ての回路を保存(未実装)</button>
+        <button onclick="clearAll()" data-i18n="clear_all_drawing">全ての描画・ポーズをクリア</button>
       </div>
     </div>
     <div class="init">
-      <h1>回路共有システム</h1>
+      <h1 data-i18n="title">回路共有システム</h1>
       <video id="init-stream"></video>
       <div class="buttons">
         <div id="room_option" class="">
-          <label><div><span>ルームID</span><input type="text" name="roomId" placeholder="ルームID"></div></label>
-          <label><div><span>名前</span><input type="text" name="name" placeholder="名前"></div></label>
-          <div class="display-none"><span>アイコン</span><input type="text" name="icon" placeholder="アイコン画像URI"></div>
+          <label><div><span data-i18n="room_id">ルームID</span><input type="text" name="roomId" placeholder="Group X"></div></label>
+          <label><div><span data-i18n="name">名前</span><input type="text" name="name" placeholder="Alex"></div></label>
+          <div class="display-none"><span data-i18n="icon">アイコン</span><input type="text" name="icon" placeholder="URI"></div>
           <div>
-            <span>表示色</span>
+            <span data-i18n="color">表示色</span>
             <form>
               <label><input type="radio" name="color" value="red"><span style="background-color: red;"></span></label>
-              <label><input type="radio" name="color" value="pink"><span style="background-color: pink;"></span></label>
-              <label><input type="radio" name="color" value="orange"><span style="background-color: orange;"></span></label>
-              <label><input type="radio" name="color" value="yellow"><span style="background-color: yellow;"></span></label>
+              <label><input type="radio" name="color" value="deeppink"><span style="background-color: deeppink;"></span></label>
+              <label><input type="radio" name="color" value="darkorange"><span style="background-color: darkorange;"></span></label>
+              <label><input type="radio" name="color" value="gold"><span style="background-color:gold;"></span></label>
               <label><input type="radio" name="color" value="lightgreen"><span style="background-color: lightgreen;"></span></label>
-              <label><input type="radio" name="color" value="lightblue"><span style="background-color: lightblue;"></span></label>
-              <label><input type="radio" name="color" value="plum"><span style="background-color:plum;"></span></label>
+              <label><input type="radio" name="color" value="deepskyblue"><span style="background-color:deepskyblue;"></span></label>
+              <label><input type="radio" name="color" value="darkorchid"><span style="background-color:darkorchid;"></span></label>
             </form>
           </div>
         </div>
-        <button id="js-join-trigger" type="button" disabled>参加</button>
-        <button id="js-join-trigger-without-camera" style="background-color: lightgray;" disabled>ビデオなしで参加</button>  
+        <button id="js-join-trigger" type="button" disabled data-i18n="video_on">ビデオをONにする</button>
+        <button id="js-join-trigger-without-camera" style="background-color: lightgray;" disabled data-i18n="join_without_video">ビデオなしで参加</button>  
       </div>
     </div>
 
       <div class="room">
-        <div class="remote-streams" id="js-remote-streams">
+        <div class="remote-streams" id="js-remote-streams"></div>
         </div>
 
       <p class="meta" id="js-meta"></p>
     </div>
     <div id="pointers">
     </div>
-    <div class="img"></div>
+    <div class="img">
+      <h2 data-i18n="saved_circuits">保存した回路</h2>
+      <p data-i18n="saved_circuits_detail">必要な回路をPCやスマートフォンに以下から直接保存してください。</p>
+    </div>
+    <div style="position: fixed;bottom: 5px;right: 5px;padding: 0px;z-index: 100;">
+    <select name="language" id="language" style="background-color: rgba(255, 255, 255, 0.5);font-size: 1.1em;" onchange="var language = document.getElementById('language');if(language.value==''){return;}change_language(language.value);language.options[0].selected=true;">
+        <option value="">🌐Lang</option>
+        <option value="ja">日本語</option>
+        <option value="en">English</option>
+      </select>
+    </div>
     <form id ="touchcontrol" class="display-none">
       <input type="radio" name="touchAction" value="scroll" id="scroll"><label for="scroll"><img src="img/scroll.svg"></label>
       <input type="radio" name="touchAction" value="point" id="point"><label for="point"><img src="img/select.svg"></label>
       <input type="radio" name="touchAction" value="draw" id="draw"><label for="draw"><img src="img/pen.svg"></label>
       <input type="radio" name="touchAction" value="off" id="off" checked>
     </form>
+    <script src="./lang.js"></script>
     <script src="https://cdn.webrtc.ecl.ntt.com/skyway-latest.js"></script>
     <script src="./key.js"></script>
     <script src="./canvas.js"></script>
     <script src="./element.js"></script>
-    <script src="./script.js"></script>    
+    <script src="./toFirebase.js"></script>
+    <script src="./script.js?ver=sfh&ver=1019"></script>    
     <script src="./smartphone.js"></script>
-
   </body>
 </html>
