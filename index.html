@@ -35,12 +35,12 @@
       <div class="option">
         <div class="right-button"></div>
         <h3 data-i18n="options">オプション</h3>
-        <button data-i18n="save_all_circuit">全ての回路を保存(未実装)</button>
+        <button onclick="saveAll()" data-i18n="save_all_circuit">全ての回路を保存(未実装)</button>
         <button onclick="clearAll()" data-i18n="clear_all_drawing">全ての描画・ポーズをクリア</button>
       </div>
     </div>
     <div class="init">
-      <h1 data-i18n="title">回路共有システム</h1>
+      <h1 data-i18n="title">手元共有システム</h1>
       <video id="init-stream"></video>
       <div class="buttons">
         <div id="room_option" class="">
@@ -74,8 +74,8 @@
     <div id="pointers">
     </div>
     <div class="img">
-      <h2 data-i18n="saved_circuits">保存した回路</h2>
-      <p data-i18n="saved_circuits_detail">必要な回路をPCやスマートフォンに以下から直接保存してください。</p>
+      <h2 data-i18n="saved_circuits">保存した画像</h2>
+      <p data-i18n="saved_circuits_detail">必要な手元の画像をPCやスマートフォンに以下から直接保存してください。</p>
     </div>
     <div style="position: fixed;bottom: 5px;right: 5px;padding: 0px;z-index: 100;">
     <select name="language" id="language" style="background-color: rgba(255, 255, 255, 0.5);font-size: 1.1em;" onchange="var language = document.getElementById('language');if(language.value==''){return;}change_language(language.value);language.options[0].selected=true;">

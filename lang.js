@@ -33,8 +33,8 @@ dict = {
         "ja" : "オプション"
     },
     "save_all_circuit":{
-        "en" : "Save ALL circuits with drawings (Under preparation)",
-        "ja" : "全ての回路を保存(未実装)"
+        "en" : "Capture and save ALL videos with drawings",
+        "ja" : "全員の手元の状態を保存"
     },
     "clear_all_drawing":{
         "en" : "Clear all drawings & pauses",
@@ -73,8 +73,8 @@ dict = {
         "ja" : "保存した回路"
     },
     "saved_circuits_detail":{
-        "en" : "Please save the circuit images from above list directly.",
-        "ja" : "必要な回路をPCやスマートフォンに以下から直接保存してください。"
+        "en" : "Please save the circuit images from above list directly if it doesn't start downloading.",
+        "ja" : "自動でダウンロードされない場合、必要な回路をPCやスマートフォンに以下から直接保存してください。"
     },
     "#↑　html　↓　js innerHTML or Alert":true,
     "you_enter_room":{
@@ -94,8 +94,8 @@ dict = {
         "ja" : " さんが退出しました。"
     },
     "save_complete":{
-        "en" : "The image was stocked to below area now. <br>Please save it to your PC manually.",
-        "ja" : "回路のセーブに成功しました。<br>以下のスペースにある画像を直接PCに保存してください。"
+        "en" : "The image was stocked to below area now. <br>Please save it to your PC manually if it doesn't start downloading.",
+        "ja" : "画像を保存します。<br>自動でダウンロードされない場合、以下のスペースにある画像を直接PCに保存してください。"
     },
     "pause":{
         "en":"pause",

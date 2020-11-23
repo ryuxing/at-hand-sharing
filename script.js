@@ -191,7 +191,7 @@ joinTrigger.addEventListener("click",localStreamOn);
       //todo
 
     });
-    leaveTrigger.addEventListener('click', () => room.close(), { once: true });
+    leaveTrigger.addEventListener('click', () =>{ room.close(); leaveTrigger.disabled=true;}, { once: true });
 
     //完全なる独自関数
 

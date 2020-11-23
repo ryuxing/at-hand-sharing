@@ -127,7 +127,7 @@ window.canvasControl = {
             fullscreen.status = false;
         }
         room.send({ fullscreen: fullscreen });
-
+z
     }
 
 };
@@ -140,6 +140,15 @@ function clearAll() {
         if (canvas.pause != undefined) { canvas.pause = false; }
     }
 
+}
+//全保存
+function saveAll(){
+    var saveNode = document.getElementsByClassName("save");
+    for(var node of saveNode){
+        canvasControl.save({target:node});
+        console.log("Clicked");
+        console.dir(node);
+    }
 }
 //local drawing
 var clicked = false;
@@ -430,12 +439,17 @@ function saveImg(url, name) {
     time += d.getMinutes() + "-";
     if (d.getSeconds() < 10) { time += "0" }
     time += d.getSeconds() + "_";
-    var filename = time + name /*+"_"+room.id*/+"png";
+    var filename = "AtHandSharing_"+room.name+"_"+time + name +"_"+".png";
         var a = document.createElement("a");
         a.setAttribute("download", filename);
-        a.src = url;
+        a.href = url;
         a.target = "_blank";
+        a.innerText="Download";
         document.querySelector("body").append(a);
-        a.click();
-        a.remove();
+        setTimeout((a)=>{
+            a.click();
+            console.log("saveIMG");
+            a.remove();
+    
+        },1000,a)
 }
