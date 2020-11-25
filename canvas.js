@@ -127,7 +127,6 @@ window.canvasControl = {
             fullscreen.status = false;
         }
         room.send({ fullscreen: fullscreen });
-z
     }
 
 };
