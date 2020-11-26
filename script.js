@@ -44,6 +44,7 @@ async function main() {
 
   }
   async function localStreamOn(e){
+  document.getElementById("init-popup").classList.remove("display-none");
   e.target.removeEventListener("click",localStreamOn);
   initStream = document.getElementById('init-stream');
   stream= await navigator.mediaDevices
@@ -82,7 +83,7 @@ async function main() {
   .catch(console.error);
   e.target.innerHTML = dict.join_with_video[lang];
   e.target.dataset['i18n']="join_with_video";
-  e.target.addEventListener("click",startSharing);
+  document.getElementById("start").addEventListener("click",startSharing);
   }
 joinTrigger.addEventListener("click",localStreamOn);
   // Register join handler

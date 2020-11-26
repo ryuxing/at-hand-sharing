@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title data-i18n="title">回路共有システム</title>
+    <title data-i18n="title">手元共有システム</title>
 		<link rel="shortcut icon" href="/ico/icon_192x192.png" />
     <link rel="apple-touch-icon" href="/ico/icon_152x152.png" />
     <link rel="icon" type="image/png" sizes="192x192" href="/ico/icon_192x192.png">
@@ -36,16 +36,21 @@
       <div class="option">
         <div class="right-button"></div>
         <h3 data-i18n="options">オプション</h3>
-        <button onclick="saveAll()" data-i18n="save_all_circuit">全ての回路を保存(未実装)</button>
+        <button onclick="saveAll()" data-i18n="save_all_circuit">全ての回路を保存</button>
         <button onclick="clearAll()" data-i18n="clear_all_drawing">全ての描画・ポーズをクリア</button>
       </div>
     </div>
     <div class="init">
       <h1 data-i18n="title">手元共有システム</h1>
-      <video id="init-stream"></video>
+      <div id="init-popup"class="display-none" style="position: fixed;top:0;left:0;width:100%;height:100%;background-color:#00000088; z-index:120;">
+        <div style="width:90%;height:90%;position: absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:white;border-radius: 15px;">
+          <video id="init-stream" style="height:calc(80% - 0em);width: 100%;left: 50%;top:50%;"></video>
+          <buttton id="start" style="bottom:20px;width:80%;left: 50%;margin-left:10%;margin-top: 1em; padding:.8em;border-radius:1.3em;display: block; background:lightskyblue;border: black solid 1px;">参加する</buttton>  
+        </div>
+      </div>
       <div class="buttons">
         <div id="room_option" class="">
-          <label><div><span data-i18n="room_id">ルームID</span><input type="text" name="roomId" placeholder="Group X"></div></label>
+          <label><div><span data-i18n="room_id">グループ</span><input type="text" name="roomId" placeholder="10"></div></label>
           <label><div><span data-i18n="name">名前</span><input type="text" name="name" placeholder="Alex"></div></label>
           <div class="display-none"><span data-i18n="icon">アイコン</span><input type="text" name="icon" placeholder="URI"></div>
           <div>
@@ -61,7 +66,7 @@
             </form>
           </div>
         </div>
-        <button id="js-join-trigger" type="button" disabled data-i18n="video_on">ビデオをONにする</button>
+        <button id="js-join-trigger" type="button" disabled data-i18n="video_on">ビデオありで参加</button>
         <button id="js-join-trigger-without-camera" style="background-color: lightgray;" disabled data-i18n="join_without_video">ビデオなしで参加</button>  
       </div>
     </div>
