@@ -95,6 +95,27 @@ joinTrigger.addEventListener("click",localStreamOn);
     profile.name=name||profile.name;
     profile.color=color||profile.color;
     profile.icon=icon||profile.icon;
+    //Create a icon Shape
+    if(name!=""){
+      var icon_cv = document.createElement("canvas");
+      icon_cv.width=80;
+      icon_cv.height=80;
+      var icon_ctx = icon_cv.getContext("2d");
+      icon_ctx.fillStyle = "rgba(255,255,255,0.6)";
+      icon_ctx.fillRect(0,0,80,80);
+      icon_ctx.fillStyle = "black"
+      icon_ctx.font = "bold 60px Gothic";
+      icon_ctx.textBaseline = "hanging";
+      var icon_txt=profile.name.slice(0,1);
+      if(profile.name.split(/[\ 　]/).length>1 && icon_txt.match(/[\x01-\x7E]/)){
+        icon_txt += profile.name.split(/[\ 　]/)[1].slice(0,1);
+        console.warn("icon_txt");
+      }
+      icon_ctx.fillText(icon_txt, 10, 10,60);
+      profile.icon = icon_cv.toDataURL("image/png");
+      delete icon_cv;  
+      console.log(profile.icon);
+    }
     history.replaceState("",roomName+" | "+dict.title[lang],"?room="+roomName);
     if(stream!=undefined){
       stream.getVideoTracks()[0].stop();
