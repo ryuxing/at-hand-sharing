@@ -140,6 +140,7 @@ joinTrigger.addEventListener("click",localStreamOn);
 
       addPointer(peer.id,profile.color,profile.icon,profile.name+"(You)");
       room.send({profile:profile});
+      registerLogging();
     });
     room.on('peerJoin', peerId => {
       addMsg("<span class='"+peerId+"'>"+peerId+"</span><span data-i18n='anyone_enters_room'>"+dict.anyone_enters_room[lang]+"</span>");

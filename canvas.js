@@ -383,7 +383,8 @@ window.onDataRcv = {
                 dom.className = "";
             }
         }, 500, src, data);
-    }
+    },
+    snapshot: function(){}
 }
 
 function initNewUser(div, data) {
