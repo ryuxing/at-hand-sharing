@@ -41,8 +41,8 @@ dict = {
         "ja" : "全ての描画・ポーズをクリア"
     },
     "room_id":{
-        "en" : "Room ID",
-        "ja" : "ルームID"
+        "en" : "Group",
+        "ja" : "グループ"
     },
     "name":{
         "en" : "Name",
