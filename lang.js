@@ -13,8 +13,8 @@ function change_language(language){
 }
 dict = {
     "title":{
-        "en" : "At-hand Sharing",
-        "ja" : "手元共有システム"
+        "en" : "ShareHandy - Share your handy",
+        "ja" : "ShareHandy - 手元共有システム"
     },
     "leave_btn":{
         "en" : "Leave",

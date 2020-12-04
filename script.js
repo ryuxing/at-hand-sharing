@@ -116,7 +116,8 @@ joinTrigger.addEventListener("click",localStreamOn);
       delete icon_cv;  
       console.log(profile.icon);
     }
-    history.replaceState("",roomName+" | "+dict.title[lang],"?room="+roomName);
+    document.getElementsByTagName("title")[0].innerHTML= roomName+" | ShareHandy";
+    history.replaceState("",roomName+" | ShareHandy","?room="+roomName);
     if(stream!=undefined){
       stream.getVideoTracks()[0].stop();
     }
