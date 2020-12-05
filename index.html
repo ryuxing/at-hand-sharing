@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,7 +9,7 @@
     <link rel="icon" type="image/png" sizes="192x192" href="./ico/icon_192x192.png">
     <link href="https://fonts.googleapis.com/css?family=M+PLUS+1p" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <meta name="apple-mobile-web-app-title" content="手元共有">
+    <meta name="apple-mobile-web-app-title" content="HandyShare">
     <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-firestore.js"></script>
   </head>
@@ -45,7 +45,7 @@
       <div id="init-popup"class="display-none" style="position: fixed;top:0;left:0;width:100%;height:100%;background-color:#00000088; z-index:120;">
         <div style="width:90%;height:90%;position: absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:white;border-radius: 15px;">
           <video id="init-stream" style="height:calc(80% - 0em);width: 100%;left: 50%;top:50%;"></video>
-          <buttton id="start" style="bottom:20px;width:80%;left: 50%;margin-left:10%;margin-top: 1em; padding:.8em;border-radius:1.3em;display: block; background:lightskyblue;border: black solid 1px;">参加する</buttton>  
+          <buttton id="start" data-i18n="join" style="bottom:20px;width:80%;left: 50%;margin-left:10%;margin-top: 1em; padding:.8em;border-radius:1.3em;display: block; background:lightskyblue;border: black solid 1px;">参加する</buttton>  
         </div>
       </div>
       <div class="buttons">
@@ -104,6 +104,7 @@
     <script src="./toFirebase.js"></script>
     <script src="./script.js?ver=sfh&ver=1019"></script>    
     <script src="./smartphone.js"></script>
+    <script src="./cookie.js"></script>
     <script src="./log.js"></script>
   </body>
 </html>

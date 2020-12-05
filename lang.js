@@ -68,6 +68,10 @@ dict = {
         "en" : "Join WITHOUT the video",
         "ja" : "ビデオなしで参加"
     },
+    "join":{
+        "en" : "Join now",
+        "ja" : "参加する"
+    },
     "saved_circuits":{
         "en" : "Saved circuits images",
         "ja" : "保存した回路"

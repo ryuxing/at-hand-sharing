@@ -439,7 +439,7 @@ function saveImg(url, name) {
     time += d.getMinutes() + "-";
     if (d.getSeconds() < 10) { time += "0" }
     time += d.getSeconds() + "_";
-    var filename = "AtHandSharing_"+room.name+"_"+time + name +"_"+".png";
+    var filename = "HandyShare_"+room.name+"_"+time + name +"_"+".png";
         var a = document.createElement("a");
         a.setAttribute("download", filename);
         a.href = url;
