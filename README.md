@@ -1,4 +1,4 @@
-# at-hand-sharing
+# ShareHandy
  自分で編集・拡張するにはSkyWayの登録が必須
 ##
 1. [SkyWay](https://webrtc.ecl.ntt.com/) のWebページで無料会員登録を行う
