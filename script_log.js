@@ -193,6 +193,7 @@ joinTrigger.addEventListener("click",localStreamOn);
       }
       var log = document.createElement("div");
       log.innerText=`{"date":"${new Date().toString()}","src":"${src}","data":${JSON.stringify(data)}},`;
+      document.getElementById("log").appendChild(log);
       console.dir(data);
     });
 
