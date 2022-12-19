@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ShareHandy</title>
+		<link rel="shortcut icon" href="./ico/icon_192x192.png" />
+    <link rel="apple-touch-icon" href="./ico/icon_152x152.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="./ico/icon_192x192.png">
+    <link href="https://fonts.googleapis.com/css?family=M+PLUS+1p" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <meta name="apple-mobile-web-app-title" content="HandyShare">
+    <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-firestore.js"></script>
+  </head>
+  <body>
+    <div class="header">
+      <div>
+        <h2 id="h2_roomId">Room_id</h2><button id="js-leave-trigger"><span class="leave_btn"data-i18n="leave_btn">退出</span></button>
+      </div>
+
+    </div>
+    <div class="left">
+      <input type="checkbox" id="show_menu">
+      <label for="show_menu"></label>
+      <div class="messages">
+        <div class="right-button"></div>
+        <h3 data-i18n="messages">メッセージ</h3>
+        <div  id="js-messages" class="scroll"></div>
+      </div>
+      <div class="member">
+        <div class="right-button"></div>
+        <h3 data-i18n="members">メンバー</h3>
+        <div class="scroll"></div>
+      </div>
+      <div class="option">
+        <div class="right-button"></div>
+        <h3 data-i18n="options">オプション</h3>
+        <button onclick="saveAll()" data-i18n="save_all_circuit">全ての回路を保存</button>
+        <button onclick="clearAll()" data-i18n="clear_all_drawing">全ての描画・ポーズをクリア</button>
+      </div>
+    </div>
+    <div class="init">
+      <h1 data-i18n="title">ShareHandy - 手元共有システム</h1>
+      <div id="init-popup"class="display-none" style="position: fixed;top:0;left:0;width:100%;height:100%;background-color:#00000088; z-index:120;">
+        <div style="width:90%;height:90%;position: absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:white;border-radius: 15px;">
+          <video id="init-stream" style="height:calc(80% - 0em);width: 100%;left: 50%;top:50%;"></video>
+          <buttton id="start" data-i18n="join" style="bottom:20px;width:80%;left: 50%;margin-left:10%;margin-top: 1em; padding:.8em;border-radius:1.3em;display: block; background:lightskyblue;border: black solid 1px;">参加する</buttton>  
+        </div>
+      </div>
+      <div class="buttons">
+        <div id="room_option" class="">
+          <label><div><span data-i18n="room_id">グループ</span><input type="text" name="roomId" placeholder="10"></div></label>
+          <label><div><span data-i18n="name">名前</span><input type="text" name="name" placeholder="Alex"></div></label>
+          <div class="display-none"><span data-i18n="icon">アイコン</span><input type="text" name="icon" placeholder="URI"></div>
+          <div>
+            <span data-i18n="color">表示色</span>
+            <form>
+              <label><input type="radio" name="color" value="red"><span style="background-color: red;"></span></label>
+              <label><input type="radio" name="color" value="deeppink"><span style="background-color: deeppink;"></span></label>
+              <label><input type="radio" name="color" value="darkorange"><span style="background-color: darkorange;"></span></label>
+              <label><input type="radio" name="color" value="gold"><span style="background-color:gold;"></span></label>
+              <label><input type="radio" name="color" value="lightgreen"><span style="background-color: lightgreen;"></span></label>
+              <label><input type="radio" name="color" value="deepskyblue"><span style="background-color:deepskyblue;"></span></label>
+              <label><input type="radio" name="color" value="darkorchid"><span style="background-color:darkorchid;"></span></label>
+            </form>
+          </div>
+        </div>
+        <button id="js-join-trigger" type="button" disabled data-i18n="video_on">ビデオありで参加</button>
+        <button id="js-join-trigger-without-camera" style="background-color: lightgray;" disabled data-i18n="join_without_video">ビデオなしで参加</button>  
+      </div>
+    </div>
+
+      <div class="room">
+        <div class="remote-streams" id="js-remote-streams"></div>
+        </div>
+
+      <p class="meta" id="js-meta"></p>
+    </div>
+    <div id="pointers">
+    </div>
+    <div class="img">
+      <h2 data-i18n="saved_circuits">保存した画像</h2>
+      <p data-i18n="saved_circuits_detail">必要な手元の画像をPCやスマートフォンに以下から直接保存してください。</p>
+    </div>
+    <div style="position: fixed;bottom: 5px;right: 5px;padding: 0px;z-index: 100;">
+    <select name="language" id="language" style="background-color: rgba(255, 255, 255, 0.5);font-size: 1.1em;" onchange="var language = document.getElementById('language');if(language.value==''){return;}change_language(language.value);language.options[0].selected=true;">
+        <option value="">🌐Lang</option>
+        <option value="ja">日本語</option>
+        <option value="en">English</option>
+      </select>
+    </div>
+    <div id="log"></div>
+    <form id ="touchcontrol" class="display-none">
+      <input type="radio" name="touchAction" value="scroll" id="scroll"><label for="scroll"><img src="img/scroll.svg"></label>
+      <input type="radio" name="touchAction" value="point" id="point"><label for="point"><img src="img/select.svg"></label>
+      <input type="radio" name="touchAction" value="draw" id="draw"><label for="draw"><img src="img/pen.svg"></label>
+      <input type="radio" name="touchAction" value="off" id="off" checked>
+    </form>
+    <script src="./lang.js"></script>
+    <script src="https://cdn.webrtc.ecl.ntt.com/skyway-latest.js"></script>
+    <script src="https://ediotwebserver.web.app/EdIoT/circuit-share/key/key.js"></script>
+    <script src="./canvas.js"></script>
+    <script src="./element.js"></script>
+    <script src="./toFirebase.js"></script>
+    <script src="./script_log.js?ver=sfh&ver=1019"></script>    
+    <script src="./smartphone.js"></script>
+    <script src="./cookie.js"></script>
+    <script src="./log.js"></script>
+  </body>
+</html>
